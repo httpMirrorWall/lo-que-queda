@@ -1,0 +1,948 @@
+{
+ "meta": {
+  "descripcion": "Serie anual de Vaca Muerta (pozos con formacion = 'vaca muerta').",
+  "ultimo_periodo_datos": "2026-08",
+  "ultimo_mes_definitivo_precios_regalias": "2026-06",
+  "ultimo_mes_precios_regalias_usado": "2026-08",
+  "precios_provisorios_desde": "2026-07",
+  "unidades": {
+   "petroleo_m3": "m3",
+   "petroleo_bbl": "barriles (1 m3 = 6,2898 bbl)",
+   "gas_miles_m3": "miles de m3 (inferido)",
+   "agua_*": "m3 (supuesto)",
+   "valor_petroleo_usd": "USD = prod_pet VM mensual x precio crudo NEUQUEN del mes (USD/m3)",
+   "valor_gas_usd": "USD = prod_gas VM mensual (Mm3) x precio gas NEUQUEN del mes (ARS/Mm3) / tipo de cambio mayorista de referencia A 3500 del mes (ARS/USD, promedio simple). Nunca se suma al valor del petróleo",
+   "arena_t": "toneladas",
+   "regalias_crudo_neuquen_usd": "regalías de crudo de la provincia de Neuquén (incluye convencional), USD",
+   "tasa_efectiva_pct": "regalías / (producción crudo Neuquén x precio Neuquén) x 100. NO APLICABLE A VM hasta resolver la inconsistencia (ver docs/investigacion_regalias.md)"
+  },
+  "regalias_rotulo": "Regalías de crudo de la provincia de Neuquén (incluye convencional)",
+  "valor_previo_usd": 7751422,
+  "valor_gas_previo_usd": 343396,
+  "valor_acumulado": "El valor acumulado incluye 2006-2009 (USD 7,751,422 en total), con la misma metodología mensual; las filas anuales de valor empiezan en 2010. Limitación: los precios históricos tienen particularidades de la fuente (p. ej. precio repetido en sep-dic de 2008) y son nominales.",
+  "acumulado": "Incluye toda la producción desde 2006 (primer dato del CSV), no solo desde 2010.",
+  "parcial": "2026 es parcial (hasta 2026-08); valor del petróleo, del gas y regalías de 2026 hasta 2026-08, con precios provisorios desde 2026-07 (definitivos hasta 2026-06); sin «años restantes» por año (ver meta.indicadores_petroleo).",
+  "pozos_nuevos_antes_del_periodo": 7,
+  "denominadores": {
+   "reservas": {
+    "m3": 533699120,
+    "composicion": "acumulado NC cuenca Neuquina a 31/12/2025 + reservas comprobadas NC Neuquina al 31/12/2025 (hoja 'fin de vida util')"
+   },
+   "iapg": {
+    "m3": 4885369964,
+    "bbl": 30728000000.0,
+    "composicion": "total del IAPG al 31/12/2024: 558 MMBO extraídos + 30.170 MMBO remanentes (Pmean)"
+   },
+   "eia": {
+    "advertencia": "No comparable con el IAPG: estimación 2013, recurso 'unproved' con riesgo; no se muestra."
+   }
+  },
+  "indicadores_petroleo": {
+   "nota": "Cada % se calcula con numerador y denominador del mismo alcance y un total de referencia fijo. El horizonte de cada año del dial es H(t) = R(t) / P(t): extrapolación a ritmo constante, no un pronóstico de producción ni una fecha de agotamiento. En 2026 (parcial), P = producción de 2025.",
+   "ultimo_periodo_datos": "2026-08",
+   "factor_bbl_por_m3": 6.2898,
+   "reservas": {
+    "alcance": "petróleo no convencional de la cuenca Neuquina (todas las formaciones; Vaca Muerta = 99,3 % de la producción NC de la cuenca en 2025)",
+    "fecha_referencia": "2025-12-31",
+    "reservas_comprobadas_m3": 414491765,
+    "reservas_comprobadas_bbl": 2607070305,
+    "acumulado_nc_neuquina_2025_m3": 119207354,
+    "inventario_referencia_m3": 533699120,
+    "produccion_nc_neuquina_2025_m3": 29319874,
+    "horizonte_anios": 14.1,
+    "horizonte_formula": "H(t) = (inventario de referencia - acumulado NC hasta t) / producción NC del año t; en 2025 = reservas / producción 2025; en 2026, P = producción 2025",
+    "pct_formula": "acumulado NC Neuquina desde 2006 hasta el año del dial / (acumulado NC Neuquina a fin de 2025 + reservas comprobadas al 31/12/2025)"
+   },
+   "iapg": {
+    "alcance": "petróleo de la Formación Vaca Muerta (IAPG); producción: pozos con formacion = 'vaca muerta'",
+    "fecha_referencia": "2024-12-31",
+    "remanente_mmbo": {
+     "p90": 18062,
+     "media": 30170,
+     "p10": 45050
+    },
+    "extraido_iapg_mmbo": 558,
+    "total_iapg_mmbo": {
+     "p90": 18620,
+     "media": 30728,
+     "p10": 45608
+    },
+    "acumulado_vm_2024_capiv_mmbo": 538.7,
+    "dif_extraido_capiv_vs_iapg_pct": -3.5,
+    "produccion_vm_2025_mmbo": 183.08,
+    "remanente_fin_2025_mmbo": {
+     "p90": 17879,
+     "media": 29987,
+     "p10": 44867
+    },
+    "inventario_referencia_m3": 4885369964,
+    "horizonte_anios": {
+     "p90": 97.7,
+     "media": 163.8,
+     "p10": 245.1
+    },
+    "horizonte_formula": "H(t) = [30.728 - (558 + acumulado VM Cap. IV hasta t - acumulado VM Cap. IV hasta 2024)] / producción VM del año t (millones de bbl); en 2025 = (30.170 - 183) / 183; en 2026, P = producción 2025. Remanente de fin de 2025 = aproximación propia",
+    "pct_formula": "acumulado VM desde 2006 hasta el año del dial / total IAPG (558 extraído + 30.170 remanente = 30.728 millones de barriles)",
+    "eia_2013_mmbo": 16220,
+    "variacion_vs_eia_pct": {
+     "remanente_30170": 86.0,
+     "total_30728": 89.4
+    }
+   }
+  }
+ },
+ "anios": [
+  {
+   "anio": 2010,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 9,
+   "pozos_nuevos": 2,
+   "petroleo_m3": 11672,
+   "petroleo_bbl": 73415,
+   "gas_miles_m3": 3986,
+   "petroleo_acumulado_m3": 38973,
+   "petroleo_acumulado_bbl": 245135,
+   "valor_petroleo_usd": 3926534,
+   "valor_acumulado_usd": 11677956,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 326852,
+   "valor_acumulado_gas_usd": 670248,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 0,
+   "arena_t": 0,
+   "pozos_fracturados": 0,
+   "agua_producida_m3": 11261,
+   "regalias_crudo_neuquen_usd": 253173737,
+   "tasa_efectiva_pct": 11.83,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 65718,
+   "petroleo_nc_neuquina_acumulado_m3": 205264,
+   "pct_extraido_reservas": 0.0385,
+   "pct_extraido_iapg": 0.0008,
+   "horizonte_reservas": {
+    "restante_m3": 533493856,
+    "produccion_m3": 65718,
+    "anio_ritmo": 2010,
+    "anios": 8117.87
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18600.5,
+     "media": 30708.5,
+     "p10": 45588.5
+    },
+    "produccion_mmbo": 0.073415,
+    "anio_ritmo": 2010,
+    "anios": {
+     "p90": 253361.6,
+     "media": 418287.4,
+     "p10": 620971.25
+    }
+   }
+  },
+  {
+   "anio": 2011,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 28,
+   "pozos_nuevos": 20,
+   "petroleo_m3": 60348,
+   "petroleo_bbl": 379579,
+   "gas_miles_m3": 24978,
+   "petroleo_acumulado_m3": 99322,
+   "petroleo_acumulado_bbl": 624714,
+   "valor_petroleo_usd": 24833976,
+   "valor_acumulado_usd": 36511932,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 1914432,
+   "valor_acumulado_gas_usd": 2584680,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 17456,
+   "arena_t": 2229,
+   "pozos_fracturados": 1,
+   "agua_producida_m3": 47214,
+   "regalias_crudo_neuquen_usd": 271948281,
+   "tasa_efectiva_pct": 11.83,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 143653,
+   "petroleo_nc_neuquina_acumulado_m3": 348917,
+   "pct_extraido_reservas": 0.0654,
+   "pct_extraido_iapg": 0.002,
+   "horizonte_reservas": {
+    "restante_m3": 533350203,
+    "produccion_m3": 143653,
+    "anio_ritmo": 2011,
+    "anios": 3712.77
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18600.12,
+     "media": 30708.12,
+     "p10": 45588.12
+    },
+    "produccion_mmbo": 0.379579,
+    "anio_ritmo": 2011,
+    "anios": {
+     "p90": 49002.0,
+     "media": 80900.52,
+     "p10": 120101.88
+    }
+   }
+  },
+  {
+   "anio": 2012,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 72,
+   "pozos_nuevos": 46,
+   "petroleo_m3": 163760,
+   "petroleo_bbl": 1030016,
+   "gas_miles_m3": 78243,
+   "petroleo_acumulado_m3": 263081,
+   "petroleo_acumulado_bbl": 1654730,
+   "valor_petroleo_usd": 77275507,
+   "valor_acumulado_usd": 113787439,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 5191088,
+   "valor_acumulado_gas_usd": 7775768,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 144348,
+   "arena_t": 22683,
+   "pozos_fracturados": 22,
+   "agua_producida_m3": 130245,
+   "regalias_crudo_neuquen_usd": 287181234,
+   "tasa_efectiva_pct": 11.86,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 302839,
+   "petroleo_nc_neuquina_acumulado_m3": 651755,
+   "pct_extraido_reservas": 0.1221,
+   "pct_extraido_iapg": 0.0054,
+   "horizonte_reservas": {
+    "restante_m3": 533047364,
+    "produccion_m3": 302839,
+    "anio_ritmo": 2012,
+    "anios": 1760.17
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18599.09,
+     "media": 30707.09,
+     "p10": 45587.09
+    },
+    "produccion_mmbo": 1.030016,
+    "anio_ritmo": 2012,
+    "anios": {
+     "p90": 18057.09,
+     "media": 29812.25,
+     "p10": 44258.64
+    }
+   }
+  },
+  {
+   "anio": 2013,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 186,
+   "pozos_nuevos": 121,
+   "petroleo_m3": 392634,
+   "petroleo_bbl": 2469592,
+   "gas_miles_m3": 189651,
+   "petroleo_acumulado_m3": 655716,
+   "petroleo_acumulado_bbl": 4124322,
+   "valor_petroleo_usd": 190962540,
+   "valor_acumulado_usd": 304749979,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 11778278,
+   "valor_acumulado_gas_usd": 19554045,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 564847,
+   "arena_t": 104326,
+   "pozos_fracturados": 105,
+   "agua_producida_m3": 377774,
+   "regalias_crudo_neuquen_usd": 279685253,
+   "tasa_efectiva_pct": 12.0,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 555196,
+   "petroleo_nc_neuquina_acumulado_m3": 1206951,
+   "pct_extraido_reservas": 0.2261,
+   "pct_extraido_iapg": 0.0134,
+   "horizonte_reservas": {
+    "restante_m3": 532492168,
+    "produccion_m3": 555196,
+    "anio_ritmo": 2013,
+    "anios": 959.11
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18596.62,
+     "media": 30704.62,
+     "p10": 45584.62
+    },
+    "produccion_mmbo": 2.469592,
+    "anio_ritmo": 2013,
+    "anios": {
+     "p90": 7530.24,
+     "media": 12433.07,
+     "p10": 18458.36
+    }
+   }
+  },
+  {
+   "anio": 2014,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 352,
+   "pozos_nuevos": 176,
+   "petroleo_m3": 960093,
+   "petroleo_bbl": 6038791,
+   "gas_miles_m3": 525344,
+   "petroleo_acumulado_m3": 1615809,
+   "petroleo_acumulado_bbl": 10163112,
+   "valor_petroleo_usd": 489543361,
+   "valor_acumulado_usd": 794293340,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 43160708,
+   "valor_acumulado_gas_usd": 62714753,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 1022737,
+   "arena_t": 192314,
+   "pozos_fracturados": 167,
+   "agua_producida_m3": 643992,
+   "regalias_crudo_neuquen_usd": 324012863,
+   "tasa_efectiva_pct": 12.5,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 1120723,
+   "petroleo_nc_neuquina_acumulado_m3": 2327674,
+   "pct_extraido_reservas": 0.4361,
+   "pct_extraido_iapg": 0.0331,
+   "horizonte_reservas": {
+    "restante_m3": 531371445,
+    "produccion_m3": 1120723,
+    "anio_ritmo": 2014,
+    "anios": 474.13
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18590.58,
+     "media": 30698.58,
+     "p10": 45578.58
+    },
+    "produccion_mmbo": 6.038791,
+    "anio_ritmo": 2014,
+    "anios": {
+     "p90": 3078.53,
+     "media": 5083.56,
+     "p10": 7547.63
+    }
+   }
+  },
+  {
+   "anio": 2015,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 537,
+   "pozos_nuevos": 192,
+   "petroleo_m3": 1285374,
+   "petroleo_bbl": 8084744,
+   "gas_miles_m3": 1143693,
+   "petroleo_acumulado_m3": 2901182,
+   "petroleo_acumulado_bbl": 18247856,
+   "valor_petroleo_usd": 610261993,
+   "valor_acumulado_usd": 1404555333,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 82896890,
+   "valor_acumulado_gas_usd": 145611643,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 1295009,
+   "arena_t": 270015,
+   "pozos_fracturados": 173,
+   "agua_producida_m3": 858227,
+   "regalias_crudo_neuquen_usd": 358532755,
+   "tasa_efectiva_pct": 13.3,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 1534530,
+   "petroleo_nc_neuquina_acumulado_m3": 3862204,
+   "pct_extraido_reservas": 0.7237,
+   "pct_extraido_iapg": 0.0594,
+   "horizonte_reservas": {
+    "restante_m3": 529836915,
+    "produccion_m3": 1534530,
+    "anio_ritmo": 2015,
+    "anios": 345.28
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18582.5,
+     "media": 30690.5,
+     "p10": 45570.5
+    },
+    "produccion_mmbo": 8.084744,
+    "anio_ritmo": 2015,
+    "anios": {
+     "p90": 2298.46,
+     "media": 3796.1,
+     "p10": 5636.6
+    }
+   }
+  },
+  {
+   "anio": 2016,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 635,
+   "pozos_nuevos": 112,
+   "petroleo_m3": 1711074,
+   "petroleo_bbl": 10762315,
+   "gas_miles_m3": 1579444,
+   "petroleo_acumulado_m3": 4612257,
+   "petroleo_acumulado_bbl": 29010172,
+   "valor_petroleo_usd": 679055163,
+   "valor_acumulado_usd": 2083610496,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 195502655,
+   "valor_acumulado_gas_usd": 341114299,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 2196560,
+   "arena_t": 394875,
+   "pozos_fracturados": 116,
+   "agua_producida_m3": 1076863,
+   "regalias_crudo_neuquen_usd": 291102672,
+   "tasa_efectiva_pct": 13.33,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 2064909,
+   "petroleo_nc_neuquina_acumulado_m3": 5927114,
+   "pct_extraido_reservas": 1.1106,
+   "pct_extraido_iapg": 0.0944,
+   "horizonte_reservas": {
+    "restante_m3": 527772006,
+    "produccion_m3": 2064909,
+    "anio_ritmo": 2016,
+    "anios": 255.59
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18571.73,
+     "media": 30679.73,
+     "p10": 45559.73
+    },
+    "produccion_mmbo": 10.762315,
+    "anio_ritmo": 2016,
+    "anios": {
+     "p90": 1725.63,
+     "media": 2850.66,
+     "p10": 4233.27
+    }
+   }
+  },
+  {
+   "anio": 2017,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 721,
+   "pozos_nuevos": 101,
+   "petroleo_m3": 2165257,
+   "petroleo_bbl": 13619034,
+   "gas_miles_m3": 2283156,
+   "petroleo_acumulado_m3": 6777514,
+   "petroleo_acumulado_bbl": 42629205,
+   "valor_petroleo_usd": 780818251,
+   "valor_acumulado_usd": 2864428747,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 331874338,
+   "valor_acumulado_gas_usd": 672988637,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 4166220,
+   "arena_t": 664867,
+   "pozos_fracturados": 140,
+   "agua_producida_m3": 1076913,
+   "regalias_crudo_neuquen_usd": 243271876,
+   "tasa_efectiva_pct": 12.95,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 2599010,
+   "petroleo_nc_neuquina_acumulado_m3": 8526124,
+   "pct_extraido_reservas": 1.5976,
+   "pct_extraido_iapg": 0.1387,
+   "horizonte_reservas": {
+    "restante_m3": 525172996,
+    "produccion_m3": 2599010,
+    "anio_ritmo": 2017,
+    "anios": 202.07
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18558.11,
+     "media": 30666.11,
+     "p10": 45546.11
+    },
+    "produccion_mmbo": 13.619034,
+    "anio_ritmo": 2017,
+    "anios": {
+     "p90": 1362.66,
+     "media": 2251.71,
+     "p10": 3344.3
+    }
+   }
+  },
+  {
+   "anio": 2018,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 884,
+   "pozos_nuevos": 187,
+   "petroleo_m3": 3299384,
+   "petroleo_bbl": 20752463,
+   "gas_miles_m3": 6717221,
+   "petroleo_acumulado_m3": 10076897,
+   "petroleo_acumulado_bbl": 63381668,
+   "valor_petroleo_usd": 1356250901,
+   "valor_acumulado_usd": 4220679648,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 1114372893,
+   "valor_acumulado_gas_usd": 1787361529,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 6365430,
+   "arena_t": 985367,
+   "pozos_fracturados": 173,
+   "agua_producida_m3": 2176207,
+   "regalias_crudo_neuquen_usd": 302331226,
+   "tasa_efectiva_pct": 12.78,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 3795939,
+   "petroleo_nc_neuquina_acumulado_m3": 12322063,
+   "pct_extraido_reservas": 2.3088,
+   "pct_extraido_iapg": 0.2063,
+   "horizonte_reservas": {
+    "restante_m3": 521377057,
+    "produccion_m3": 3795939,
+    "anio_ritmo": 2018,
+    "anios": 137.35
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18537.36,
+     "media": 30645.36,
+     "p10": 45525.36
+    },
+    "produccion_mmbo": 20.752463,
+    "anio_ritmo": 2018,
+    "anios": {
+     "p90": 893.26,
+     "media": 1476.71,
+     "p10": 2193.73
+    }
+   }
+  },
+  {
+   "anio": 2019,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 1047,
+   "pozos_nuevos": 186,
+   "petroleo_m3": 5228308,
+   "petroleo_bbl": 32885014,
+   "gas_miles_m3": 11496075,
+   "petroleo_acumulado_m3": 15305206,
+   "petroleo_acumulado_bbl": 96266682,
+   "valor_petroleo_usd": 1779147632,
+   "valor_acumulado_usd": 5999827280,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 1442639753,
+   "valor_acumulado_gas_usd": 3230001283,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 9246512,
+   "arena_t": 1486842,
+   "pozos_fracturados": 190,
+   "agua_producida_m3": 3123900,
+   "regalias_crudo_neuquen_usd": 328821494,
+   "tasa_efectiva_pct": 12.54,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 5690300,
+   "petroleo_nc_neuquina_acumulado_m3": 18012363,
+   "pct_extraido_reservas": 3.375,
+   "pct_extraido_iapg": 0.3133,
+   "horizonte_reservas": {
+    "restante_m3": 515686757,
+    "produccion_m3": 5690300,
+    "anio_ritmo": 2019,
+    "anios": 90.63
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18504.48,
+     "media": 30612.48,
+     "p10": 45492.48
+    },
+    "produccion_mmbo": 32.885014,
+    "anio_ritmo": 2019,
+    "anios": {
+     "p90": 562.7,
+     "media": 930.89,
+     "p10": 1383.38
+    }
+   }
+  },
+  {
+   "anio": 2020,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 1068,
+   "pozos_nuevos": 88,
+   "petroleo_m3": 6582523,
+   "petroleo_bbl": 41402750,
+   "gas_miles_m3": 10950357,
+   "petroleo_acumulado_m3": 21887728,
+   "petroleo_acumulado_bbl": 137669432,
+   "valor_petroleo_usd": 1694766726,
+   "valor_acumulado_usd": 7694594006,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 953486999,
+   "valor_acumulado_gas_usd": 4183488281,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 4588114,
+   "arena_t": 739763,
+   "pozos_fracturados": 87,
+   "agua_producida_m3": 2749059,
+   "regalias_crudo_neuquen_usd": 270626111,
+   "tasa_efectiva_pct": 12.24,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 6939139,
+   "petroleo_nc_neuquina_acumulado_m3": 24951502,
+   "pct_extraido_reservas": 4.6752,
+   "pct_extraido_iapg": 0.448,
+   "horizonte_reservas": {
+    "restante_m3": 508747618,
+    "produccion_m3": 6939139,
+    "anio_ritmo": 2020,
+    "anios": 73.32
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18463.07,
+     "media": 30571.07,
+     "p10": 45451.07
+    },
+    "produccion_mmbo": 41.40275,
+    "anio_ritmo": 2020,
+    "anios": {
+     "p90": 445.94,
+     "media": 738.38,
+     "p10": 1097.78
+    }
+   }
+  },
+  {
+   "anio": 2021,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 1302,
+   "pozos_nuevos": 260,
+   "petroleo_m3": 9436415,
+   "petroleo_bbl": 59353165,
+   "gas_miles_m3": 13313882,
+   "petroleo_acumulado_m3": 31324143,
+   "petroleo_acumulado_bbl": 197022597,
+   "valor_petroleo_usd": 3295161080,
+   "valor_acumulado_usd": 10989755086,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 1477817990,
+   "valor_acumulado_gas_usd": 5661306271,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 14376647,
+   "arena_t": 2245160,
+   "pozos_fracturados": 251,
+   "agua_producida_m3": 4434008,
+   "regalias_crudo_neuquen_usd": 476057446,
+   "tasa_efectiva_pct": 12.13,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 9738667,
+   "petroleo_nc_neuquina_acumulado_m3": 34690168,
+   "pct_extraido_reservas": 6.4999,
+   "pct_extraido_iapg": 0.6412,
+   "horizonte_reservas": {
+    "restante_m3": 499008951,
+    "produccion_m3": 9738667,
+    "anio_ritmo": 2021,
+    "anios": 51.24
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18403.72,
+     "media": 30511.72,
+     "p10": 45391.72
+    },
+    "produccion_mmbo": 59.353165,
+    "anio_ritmo": 2021,
+    "anios": {
+     "p90": 310.07,
+     "media": 514.07,
+     "p10": 764.77
+    }
+   }
+  },
+  {
+   "anio": 2022,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 1554,
+   "pozos_nuevos": 288,
+   "petroleo_m3": 14087579,
+   "petroleo_bbl": 88608053,
+   "gas_miles_m3": 18204561,
+   "petroleo_acumulado_m3": 45411722,
+   "petroleo_acumulado_bbl": 285630650,
+   "valor_petroleo_usd": 6035661049,
+   "valor_acumulado_usd": 17025416135,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 2347248357,
+   "valor_acumulado_gas_usd": 8008554628,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 18107940,
+   "arena_t": 2980782,
+   "pozos_fracturados": 294,
+   "agua_producida_m3": 6343278,
+   "regalias_crudo_neuquen_usd": 783062980,
+   "tasa_efectiva_pct": 11.96,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 14397946,
+   "petroleo_nc_neuquina_acumulado_m3": 49088114,
+   "pct_extraido_reservas": 9.1977,
+   "pct_extraido_iapg": 0.9295,
+   "horizonte_reservas": {
+    "restante_m3": 484611006,
+    "produccion_m3": 14397946,
+    "anio_ritmo": 2022,
+    "anios": 33.66
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18315.11,
+     "media": 30423.11,
+     "p10": 45303.11
+    },
+    "produccion_mmbo": 88.608053,
+    "anio_ritmo": 2022,
+    "anios": {
+     "p90": 206.7,
+     "media": 343.34,
+     "p10": 511.28
+    }
+   }
+  },
+  {
+   "anio": 2023,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 1866,
+   "pozos_nuevos": 330,
+   "petroleo_m3": 17734261,
+   "petroleo_bbl": 111544955,
+   "gas_miles_m3": 21171426,
+   "petroleo_acumulado_m3": 63145983,
+   "petroleo_acumulado_bbl": 397175605,
+   "valor_petroleo_usd": 7205576740,
+   "valor_acumulado_usd": 24230992875,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 2814853213,
+   "valor_acumulado_gas_usd": 10823407842,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 20701650,
+   "arena_t": 3159845,
+   "pozos_fracturados": 319,
+   "agua_producida_m3": 8119789,
+   "regalias_crudo_neuquen_usd": 880524525,
+   "tasa_efectiva_pct": 11.88,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 18021833,
+   "petroleo_nc_neuquina_acumulado_m3": 67109947,
+   "pct_extraido_reservas": 12.5745,
+   "pct_extraido_iapg": 1.2926,
+   "horizonte_reservas": {
+    "restante_m3": 466589173,
+    "produccion_m3": 18021833,
+    "anio_ritmo": 2023,
+    "anios": 25.89
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18203.57,
+     "media": 30311.57,
+     "p10": 45191.57
+    },
+    "produccion_mmbo": 111.544955,
+    "anio_ritmo": 2023,
+    "anios": {
+     "p90": 163.19,
+     "media": 271.74,
+     "p10": 405.14
+    }
+   }
+  },
+  {
+   "anio": 2024,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 2232,
+   "pozos_nuevos": 406,
+   "petroleo_m3": 22507501,
+   "petroleo_bbl": 141567681,
+   "gas_miles_m3": 25423062,
+   "petroleo_acumulado_m3": 85653484,
+   "petroleo_acumulado_bbl": 538743286,
+   "valor_petroleo_usd": 9921360294,
+   "valor_acumulado_usd": 34152353169,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 3013824556,
+   "valor_acumulado_gas_usd": 13837232397,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 23334290,
+   "arena_t": 3654692,
+   "pozos_fracturados": 336,
+   "agua_producida_m3": 11373526,
+   "regalias_crudo_neuquen_usd": 1044957528,
+   "tasa_efectiva_pct": 11.78,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 22777533,
+   "petroleo_nc_neuquina_acumulado_m3": 89887480,
+   "pct_extraido_reservas": 16.8424,
+   "pct_extraido_iapg": 1.7533,
+   "horizonte_reservas": {
+    "restante_m3": 443811640,
+    "produccion_m3": 22777533,
+    "anio_ritmo": 2024,
+    "anios": 19.48
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 18062.0,
+     "media": 30170.0,
+     "p10": 45050.0
+    },
+    "produccion_mmbo": 141.567681,
+    "anio_ritmo": 2024,
+    "anios": {
+     "p90": 127.59,
+     "media": 213.11,
+     "p10": 318.22
+    }
+   }
+  },
+  {
+   "anio": 2025,
+   "parcial": false,
+   "ultimo_mes": 12,
+   "pozos_activos": 2694,
+   "pozos_nuevos": 470,
+   "petroleo_m3": 29106869,
+   "petroleo_bbl": 183076385,
+   "gas_miles_m3": 27529886,
+   "petroleo_acumulado_m3": 114760353,
+   "petroleo_acumulado_bbl": 721819671,
+   "valor_petroleo_usd": 11359746935,
+   "valor_acumulado_usd": 45512100104,
+   "valor_petroleo_usd_hasta_mes": 12,
+   "valor_gas_usd": 3166513315,
+   "valor_acumulado_gas_usd": 17003745712,
+   "valor_gas_usd_hasta_mes": 12,
+   "agua_fractura_m3": 33379706,
+   "arena_t": 5099546,
+   "pozos_fracturados": 432,
+   "agua_producida_m3": 15622239,
+   "regalias_crudo_neuquen_usd": 1165758332,
+   "tasa_efectiva_pct": 11.61,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 12,
+   "petroleo_nc_neuquina_m3": 29319874,
+   "petroleo_nc_neuquina_acumulado_m3": 119207354,
+   "pct_extraido_reservas": 22.3361,
+   "pct_extraido_iapg": 2.3491,
+   "horizonte_reservas": {
+    "restante_m3": 414491765,
+    "produccion_m3": 29319874,
+    "anio_ritmo": 2025,
+    "anios": 14.14
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 17878.92,
+     "media": 29986.92,
+     "p10": 44866.92
+    },
+    "produccion_mmbo": 183.076385,
+    "anio_ritmo": 2025,
+    "anios": {
+     "p90": 97.66,
+     "media": 163.79,
+     "p10": 245.07
+    }
+   }
+  },
+  {
+   "anio": 2026,
+   "parcial": true,
+   "ultimo_mes": 8,
+   "pozos_activos": 3028,
+   "pozos_nuevos": 371,
+   "petroleo_m3": 24029103,
+   "petroleo_bbl": 151138253,
+   "gas_miles_m3": 21326208,
+   "petroleo_acumulado_m3": 138789457,
+   "petroleo_acumulado_bbl": 872957925,
+   "valor_petroleo_usd": 11946610958,
+   "valor_acumulado_usd": 57458711062,
+   "valor_petroleo_usd_hasta_mes": 8,
+   "valor_gas_usd": 2709030827,
+   "valor_acumulado_gas_usd": 19712776539,
+   "valor_gas_usd_hasta_mes": 8,
+   "agua_fractura_m3": 16996041,
+   "arena_t": 2501994,
+   "pozos_fracturados": 217,
+   "agua_producida_m3": 13279590,
+   "regalias_crudo_neuquen_usd": 1233554419,
+   "tasa_efectiva_pct": 11.61,
+   "tasa_efectiva_aplicable_a_vm": false,
+   "regalias_hasta_mes": 8,
+   "petroleo_nc_neuquina_m3": 24167625,
+   "petroleo_nc_neuquina_acumulado_m3": 143374979,
+   "pct_extraido_reservas": 26.8644,
+   "pct_extraido_iapg": 2.8409,
+   "horizonte_reservas": {
+    "restante_m3": 390324140,
+    "produccion_m3": 29319874,
+    "anio_ritmo": 2025,
+    "anios": 13.31,
+    "nota": "2026 es parcial: R descuenta lo extraído hasta el último mes con datos; P = producción de 2025"
+   },
+   "horizonte_iapg": {
+    "restante_mmbo": {
+     "p90": 17727.79,
+     "media": 29835.79,
+     "p10": 44715.79
+    },
+    "produccion_mmbo": 183.076385,
+    "anio_ritmo": 2025,
+    "anios": {
+     "p90": 96.83,
+     "media": 162.97,
+     "p10": 244.25
+    },
+    "nota": "2026 es parcial: R descuenta lo extraído hasta el último mes con datos; P = producción de 2025"
+   }
+  }
+ ]
+}

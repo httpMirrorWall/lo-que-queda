@@ -1,0 +1,388 @@
+{
+ "pozos_vm": 3417,
+ "filas_vm": 219848,
+ "ultimo_periodo_datos": [
+  2026,
+  8
+ ],
+ "negativos_corregidos_a_cero": {
+  "prod_pet": 0,
+  "prod_gas": 0,
+  "prod_agua": 0,
+  "detalle": []
+ },
+ "coordenadas": {
+  "pozos_sin_coordenadas": 0,
+  "pozos_con_mas_de_una_coordenada": 0
+ },
+ "pozos_vm_sin_ninguna_produccion_positiva": {
+  "cantidad": 54,
+  "nota": "Sin fecha de aparición: excluidos de pozos_vm.json por decisión de la autora",
+  "idpozo_todos": [
+   145260,
+   145329,
+   145330,
+   153218,
+   153794,
+   157104,
+   158950,
+   158969,
+   159558,
+   159753,
+   159771,
+   160206,
+   160960,
+   161211,
+   161311,
+   161871,
+   162247,
+   162313,
+   162675,
+   162774,
+   162775,
+   162783,
+   162784,
+   162785,
+   162786,
+   163194,
+   164032,
+   165102,
+   165289,
+   165290,
+   165406,
+   165479,
+   165698,
+   165774,
+   166178,
+   166213,
+   166364,
+   166821,
+   166822,
+   166823,
+   166824,
+   166854,
+   166990,
+   166991,
+   167153,
+   167247,
+   167514,
+   167515,
+   167516,
+   167527,
+   167528,
+   167529,
+   167530,
+   167541
+  ]
+ },
+ "atributos_cambiantes": {
+  "pozos_que_cambian_empresa": 296,
+  "pozos_que_cambian_tipopozo": 523,
+  "pozos_con_tipopozo_nulo_en_ultimo_mes_con_prod": 0
+ },
+ "meses_vm_definitivos_sin_precio_o_precio_cero": [],
+ "valor_previo_anio_desde": {
+  "usd": 7751422,
+  "m3_petroleo": 27301,
+  "meses_con_produccion": 48,
+  "meses_con_produccion_sin_precio": 0,
+  "por_anio_usd": {
+   "2006": 889183,
+   "2007": 2181235,
+   "2008": 2136435,
+   "2009": 2544568
+  }
+ },
+ "meses_vm_definitivos_gas_sin_precio_o_tc": [],
+ "valor_gas": {
+  "valor_previo_anio_desde_usd": 343396,
+  "tc_fuente": "BCRA, tipo de cambio mayorista de referencia (Com. A 3500), promedio simple mensual de los días informados",
+  "ejemplo_2025_08": {
+   "prod_gas_Mm3": 2792681.2,
+   "precio_ars_por_Mm3": 184930.07,
+   "tc_ars_por_usd": 1329.5375,
+   "tc_dias": 20,
+   "valor_ars": 516450731820,
+   "valor_usd": 388443902
+  }
+ },
+ "fractura": {
+  "filas_originales": 4922,
+  "duplicados_exactos_eliminados": 5,
+  "criterio_duplicado": "igualdad en todas las columnas excepto id_base_fractura_adjiv, fecha_data, anio_carga, mes_carga",
+  "duplicados_detalle_idpozo": [
+   68651,
+   161308,
+   162599,
+   162600,
+   163285
+  ],
+  "excluidos_agua_537184_6": {
+   "registros": 3,
+   "idpozo": [
+    160191,
+    160192,
+    160193
+   ],
+   "siglas": [
+    "XOM.Nq.PdY-1001(h)",
+    "XOM.Nq.PdY-1002(h)",
+    "XOM.Nq.PdY-1003(h)"
+   ]
+  },
+  "inicio_en_el_futuro_reemplazado_por_fecha_fin": {
+   "registros": 2,
+   "fecha_referencia": "2026-10-14",
+   "siglas": [
+    "VIS.Nq.BPE-2322(h)",
+    "VIS.Nq.BPE-2323(h)"
+   ],
+   "fecha_inicio_original": [
+    "2026-11-05",
+    "2026-12-05"
+   ],
+   "fecha_fin_usada": [
+    "2026-05-28",
+    "2026-05-28"
+   ]
+  },
+  "registros_tras_limpieza": 4914,
+  "registros_en_pozos_vm": 3025,
+  "registros_de_los_pozos_vm_sin_produccion": {
+   "registros": 8,
+   "pozos": 7,
+   "agua_m3": 243794,
+   "nota": "se mantienen en la serie de fractura (no se indicó excluirlos de ella)"
+  },
+  "pozos_vm_con_fractura": 3014,
+  "registros_vm_fuera_del_periodo_de_la_serie": 0,
+  "registros_vm_con_agua_cero": 2,
+  "combinaciones_pozo_anio": 3023
+ },
+ "profundidad": {
+  "mediana_vm_m": 5569.0,
+  "rango_valido_m": [
+   1000,
+   8000
+  ],
+  "pozos_vm_total": 3417,
+  "pozos_con_profundidad_estimada": 174,
+  "pozos_estimados_exportados": 170,
+  "de_los_cuales_valor_cero_o_nulo": 153,
+  "de_los_cuales_fuera_de_rango_no_nulo": 21
+ },
+ "poligono": {
+  "vertices_original": 3433,
+  "vertices_simplificado": 245,
+  "tolerancia_grados": 0.01,
+  "pozos_vm_dentro_original": 3417,
+  "pozos_vm_dentro_simplificado": 3417,
+  "pozos_vm_fuera_simplificado": [],
+  "pozos_vm_total": 3417,
+  "pozos_exportados_dentro_simplificado": 3363,
+  "pozos_exportados": 3363,
+  "tamano_geojson_kb": 6.0
+ },
+ "control_vs_serie_shale": [
+  {
+   "anio": 2010,
+   "meses_serie": 12,
+   "vm_m3": 11672,
+   "serie_shale_m3": 14384,
+   "dif_m3": -2712,
+   "dif_pct": -18.855
+  },
+  {
+   "anio": 2011,
+   "meses_serie": 12,
+   "vm_m3": 60348,
+   "serie_shale_m3": 63835,
+   "dif_m3": -3487,
+   "dif_pct": -5.462
+  },
+  {
+   "anio": 2012,
+   "meses_serie": 12,
+   "vm_m3": 163760,
+   "serie_shale_m3": 164393,
+   "dif_m3": -633,
+   "dif_pct": -0.385
+  },
+  {
+   "anio": 2013,
+   "meses_serie": 12,
+   "vm_m3": 392634,
+   "serie_shale_m3": 393933,
+   "dif_m3": -1299,
+   "dif_pct": -0.33
+  },
+  {
+   "anio": 2014,
+   "meses_serie": 12,
+   "vm_m3": 960093,
+   "serie_shale_m3": 966690,
+   "dif_m3": -6597,
+   "dif_pct": -0.682
+  },
+  {
+   "anio": 2015,
+   "meses_serie": 12,
+   "vm_m3": 1285374,
+   "serie_shale_m3": 1327356,
+   "dif_m3": -41982,
+   "dif_pct": -3.163
+  },
+  {
+   "anio": 2016,
+   "meses_serie": 12,
+   "vm_m3": 1711074,
+   "serie_shale_m3": 1733438,
+   "dif_m3": -22364,
+   "dif_pct": -1.29
+  },
+  {
+   "anio": 2017,
+   "meses_serie": 12,
+   "vm_m3": 2165257,
+   "serie_shale_m3": 2177312,
+   "dif_m3": -12055,
+   "dif_pct": -0.554
+  },
+  {
+   "anio": 2018,
+   "meses_serie": 12,
+   "vm_m3": 3299384,
+   "serie_shale_m3": 3313379,
+   "dif_m3": -13996,
+   "dif_pct": -0.422
+  },
+  {
+   "anio": 2019,
+   "meses_serie": 12,
+   "vm_m3": 5228308,
+   "serie_shale_m3": 5266704,
+   "dif_m3": -38395,
+   "dif_pct": -0.729
+  },
+  {
+   "anio": 2020,
+   "meses_serie": 12,
+   "vm_m3": 6582523,
+   "serie_shale_m3": 6595556,
+   "dif_m3": -13033,
+   "dif_pct": -0.198
+  },
+  {
+   "anio": 2021,
+   "meses_serie": 12,
+   "vm_m3": 9436415,
+   "serie_shale_m3": 9443185,
+   "dif_m3": -6769,
+   "dif_pct": -0.072
+  },
+  {
+   "anio": 2022,
+   "meses_serie": 12,
+   "vm_m3": 14087579,
+   "serie_shale_m3": 14091678,
+   "dif_m3": -4099,
+   "dif_pct": -0.029
+  },
+  {
+   "anio": 2023,
+   "meses_serie": 12,
+   "vm_m3": 17734261,
+   "serie_shale_m3": 17739232,
+   "dif_m3": -4971,
+   "dif_pct": -0.028
+  },
+  {
+   "anio": 2024,
+   "meses_serie": 12,
+   "vm_m3": 22507501,
+   "serie_shale_m3": 22685421,
+   "dif_m3": -177920,
+   "dif_pct": -0.784
+  },
+  {
+   "anio": 2025,
+   "meses_serie": 12,
+   "vm_m3": 29106869,
+   "serie_shale_m3": 29120105,
+   "dif_m3": -13236,
+   "dif_pct": -0.045
+  },
+  {
+   "anio": 2026,
+   "meses_serie": 8,
+   "vm_m3": 24029103,
+   "serie_shale_m3": 24047772,
+   "dif_m3": -18669,
+   "dif_pct": -0.078
+  }
+ ],
+ "control_vs_iae": {
+  "acumulado_vm_2025_bbl": 721819671,
+  "iae_bbl": 722000000.0,
+  "dif_bbl": -180329,
+  "dif_pct": -0.02
+ },
+ "tamanos_kb": {
+  "pozos_vm.json": 1698.3,
+  "serie_anual_vm.json": 14.9,
+  "cuenca_neuquina.geojson": 6.0
+ },
+ "serie_2025": {
+  "anio": 2025,
+  "parcial": false,
+  "ultimo_mes": 12,
+  "pozos_activos": 2694,
+  "pozos_nuevos": 470,
+  "petroleo_m3": 29106869,
+  "petroleo_bbl": 183076385,
+  "gas_miles_m3": 27529886,
+  "petroleo_acumulado_m3": 114760353,
+  "petroleo_acumulado_bbl": 721819671,
+  "valor_petroleo_usd": 11359746935,
+  "valor_acumulado_usd": 45512100104,
+  "valor_petroleo_usd_hasta_mes": 12,
+  "valor_gas_usd": 3166513315,
+  "valor_acumulado_gas_usd": 17003745712,
+  "valor_gas_usd_hasta_mes": 12,
+  "agua_fractura_m3": 33379706,
+  "arena_t": 5099546,
+  "pozos_fracturados": 432,
+  "agua_producida_m3": 15622239,
+  "regalias_crudo_neuquen_usd": 1165758332,
+  "tasa_efectiva_pct": 11.61,
+  "tasa_efectiva_aplicable_a_vm": false,
+  "regalias_hasta_mes": 12
+ },
+ "serie_2026": {
+  "anio": 2026,
+  "parcial": true,
+  "ultimo_mes": 8,
+  "pozos_activos": 3028,
+  "pozos_nuevos": 371,
+  "petroleo_m3": 24029103,
+  "petroleo_bbl": 151138253,
+  "gas_miles_m3": 21326208,
+  "petroleo_acumulado_m3": 138789457,
+  "petroleo_acumulado_bbl": 872957925,
+  "valor_petroleo_usd": 11946610958,
+  "valor_acumulado_usd": 57458711062,
+  "valor_petroleo_usd_hasta_mes": 8,
+  "valor_gas_usd": 2709030827,
+  "valor_acumulado_gas_usd": 19712776539,
+  "valor_gas_usd_hasta_mes": 8,
+  "agua_fractura_m3": 16996041,
+  "arena_t": 2501994,
+  "pozos_fracturados": 217,
+  "agua_producida_m3": 13279590,
+  "regalias_crudo_neuquen_usd": 1233554419,
+  "tasa_efectiva_pct": 11.61,
+  "tasa_efectiva_aplicable_a_vm": false,
+  "regalias_hasta_mes": 8
+ },
+ "generado": "2026-10-14 14:27:16"
+}

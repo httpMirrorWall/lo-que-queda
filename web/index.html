@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Lo que queda · Vaca Muerta</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Pestaña fija: metodología y fuentes -->
+  <nav id="lateral"><a href="#" id="link-metodo"></a></nav>
+
+  <!-- ============ EXPLORADOR: una sola pantalla, grilla fija ============ -->
+  <main id="exp">
+
+    <header id="exp-cab">
+      <div id="cab-izq">
+        <h1 id="exp-titulo"></h1>
+        <div id="exp-anio" aria-live="polite"></div>
+      </div>
+      <div id="cab-der">
+        <div id="cab-tarjetas"></div>
+        <div id="cab-pie"><p id="cab-nota"></p><button id="btn-modulo" type="button" class="enlace"></button></div>
+      </div>
+    </header>
+
+    <aside id="panel-izq" class="panel panel-ambar"></aside>
+
+    <section id="exp-mapa">
+      <div id="mapa-barra">
+        <div class="grupo" role="group" aria-labelledby="vista-et">
+          <span id="vista-et" class="et"></span>
+          <div class="seg" id="seg-vista"></div>
+          <span id="info-vista"></span>
+        </div>
+        <div class="grupo grupo-der">
+          <div id="filtros">
+            <button id="btn-filtros" type="button" aria-expanded="false"></button>
+            <div id="filtros-panel" hidden>
+              <label><span data-t="filtros.operador"></span><select id="f-emp"></select></label>
+              <label><span data-t="filtros.tipo"></span><select id="f-tipo"></select></label>
+              <button id="f-limpiar" type="button" data-t="filtros.limpiar"></button>
+              <p data-t="filtros.nota"></p>
+            </div>
+          </div>
+          <button id="btn-sismos" type="button" aria-pressed="false"><span class="ico-sismo" aria-hidden="true"></span><span id="btn-sismos-txt"></span></button><span id="info-sismos-todos"></span>
+          <button id="btn-vista" type="button"></button>
+        </div>
+      </div>
+
+      <div id="mapa-zona">
+        <div id="mapa"></div>
+        <div id="mapa-atrib"></div>
+      </div>
+
+      <div id="mapa-pie">
+        <div id="mapa-estado"><span id="etiqueta-pozos"></span><span id="info-pozos"></span></div>
+      </div>
+    </section>
+
+    <aside id="panel-der" class="panel panel-agua"></aside>
+
+    <footer id="dial">
+      <button id="btn-play" type="button" aria-label="Reproducir">
+        <svg class="ico-play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4.5 2.8v10.4a.6.6 0 0 0 .92.5l8-5.2a.6.6 0 0 0 0-1l-8-5.2a.6.6 0 0 0-.92.5Z" fill="currentColor"/></svg>
+        <svg class="ico-pausa" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg>
+      </button>
+      <div id="dial-central">
+        <div id="dial-pista">
+          <div id="dial-hitos"></div>
+          <div id="dial-linea"><div id="dial-tramo-parcial"></div></div>
+          <input id="dial-rango" type="range" min="0" max="16" step="any" value="15" aria-label="Año">
+          <div id="dial-marcas"></div>
+        </div>
+      </div>
+      <span id="info-dial"></span>
+    </footer>
+  </main>
+
+  <!-- ============ INTRO: capa a pantalla completa sobre el explorador ============ -->
+  <section id="intro" aria-label="Introducción">
+    <div id="intro-mapa" aria-hidden="true"></div>
+    <div id="intro-velo" aria-hidden="true"></div>
+    <div id="intro-caja">
+      <p id="intro-sobre" data-t="intro.sobre"></p>
+      <h2 data-t="intro.titulo"></h2>
+      <p id="intro-sub" data-t="intro.subtitulo"></p>
+      <p id="intro-parrafo" data-t="intro.parrafo"></p>
+      <p id="intro-parrafo2" class="intro-p" data-t="intro.parrafo2"></p>
+      <div id="intro-tarjetas"></div>
+      <div id="intro-acciones">
+        <button id="intro-boton" type="button">
+          <span data-t="intro.boton"></span>
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="#" id="intro-saltar" data-t="intro.saltar"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Módulo «¿Por qué dos respuestas? Reserva o recurso» -->
+  <div id="modulo" hidden>
+    <div id="modulo-fondo"></div>
+    <div id="modulo-caja" role="dialog" aria-modal="true" aria-labelledby="modulo-titulo">
+      <button id="modulo-cerrar" type="button"></button>
+      <div id="modulo-contenido"></div>
+    </div>
+  </div>
+
+  <!-- Metodología y fuentes -->
+  <div id="metodo" hidden>
+    <div id="metodo-fondo"></div>
+    <aside id="metodo-caja" role="dialog" aria-modal="true" aria-label="Metodología y fuentes">
+      <button id="metodo-cerrar" type="button"></button>
+      <div id="metodo-contenido"></div>
+    </aside>
+  </div>
+
+  <!-- ventana flotante de los (i) y del glosario -->
+  <div id="pop" role="tooltip" hidden></div>
+
+  <!-- deck.gl por CDN (UMD), sin mapa base -->
+  <script src="https://cdn.jsdelivr.net/npm/deck.gl@9.1.12/dist.min.js"></script>
+  <script src="textos.js"></script>
+  <script src="datos/pozos.js"></script>
+  <script src="datos/serie.js"></script>
+  <script src="datos/cuenca.js"></script>
+  <script src="datos/hitos.js"></script>
+  <script src="datos/sismos.js"></script>
+  <script src="datos/area.js"></script>
+  <script src="datos/contexto.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
